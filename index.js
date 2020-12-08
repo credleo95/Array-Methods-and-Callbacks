@@ -117,7 +117,8 @@ function getWinners(array, callback) {
     )
     return winners; 
         }
-getWinners(fifaData, getFinals);
+getWinners(fifaData, getFinals());
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use the higher-order function getWinnersByYear to do the following:
@@ -130,15 +131,16 @@ hint: the strings returned need to exactly match the string in step 4.
  */
 
 function getWinnersByYear(array, callbackYears, callbackWinners) {
-    const years = callbackYears(array);
     const winners = callbackWinners(array);
-    const winnersYears = winners + years  ;
-    const finalArray = winnersYears.map((item) => {
-        return `In ${item.Year}, ${item.country} won the world cup!`
-    }) 
-    return finalArray;
+    const years = callbackYears(array);
+    const winnerYears = array.map((item) => {
+        return `In ${item[years]}, ${item[winners]} won the world cup!`
+    })
+    return winnerYears; 
 }
-getWinnersByYear(fifaData,getYears,getWinners);
+
+console.log(getWinnersByYear(fifaData,getYears,getWinners));
+   
 
 
 
@@ -152,10 +154,15 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-   /* code here */
-}
-
+function getAverageGoals(callbackFinals) {
+  const finals = callbackFinals
+    const homeAwayAverage = finals.reduce((total, item) => {
+          return (total + item["Home Team Goals"] + item["Away Team Goals"])/item.length;
+        }, 0);
+       const average =  Math.round(homeAwayAverage)
+       return average; 
+    }
+getAverageGoals(getFinals(fifaData));
 
 
 
