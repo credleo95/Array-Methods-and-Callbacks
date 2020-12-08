@@ -66,9 +66,10 @@ hint - you should be looking at the stage key inside of the objects
 */
 
 function getFinals(data) {
+    console.log(data);
 const finals = data.filter((items) => {
     return items.Stage === "Final"
-}) 
+}); 
 return finals;
 }
 console.log(getFinals(fifaData));
@@ -88,7 +89,7 @@ function getYears(array,callback) {
 })
 return years;
 }
-getYears(fifaData,getFinals);
+getYears(fifaData,getFinals());
 
 
 
@@ -117,7 +118,7 @@ function getWinners(array, callback) {
     )
     return winners; 
         }
-getWinners(fifaData, getFinals());
+console.log(getWinners(fifaData, getFinals()));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -130,16 +131,16 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(array, callbackYears, callbackWinners) {
+function getWinnersByYear(/*array, callbackYears, callbackWinners*/) {/*
     const winners = callbackWinners(array);
     const years = callbackYears(array);
     const winnerYears = array.map((item) => {
         return `In ${item[years]}, ${item[winners]} won the world cup!`
     })
-    return winnerYears; 
+    return winnerYears; */
 }
 
-console.log(getWinnersByYear(fifaData,getYears,getWinners));
+// console.log(getWinnersByYear(fifaData,getYears,getWinners));
    
 
 
